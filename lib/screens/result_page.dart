@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bmi_calculator/constants.dart';
-import 'package:flutter_bmi_calculator/components/reusable_card.dart';
-import 'package:flutter_bmi_calculator/components/bottom_button.dart';
+import 'package:flutter_bmi_calculator/constants/app_textstyles.dart';
+import 'package:flutter_bmi_calculator/constants/constants.dart';
+
+import 'package:flutter_bmi_calculator/widgets/bottom_button.dart';
+import 'package:flutter_bmi_calculator/widgets/reusable_card.dart';
 
 class ResultPage extends StatelessWidget {
   final String bmiResult;
@@ -30,7 +32,7 @@ class ResultPage extends StatelessWidget {
               alignment: Alignment.bottomLeft,
               child: Text(
                 'Your Result',
-                style: kTitleTextStyle,
+                style: AppTextstyles.kTitleTextStyle,
               ),
             ),
           ),
@@ -44,16 +46,16 @@ class ResultPage extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     resultText,
-                    style: kResultTextStyle,
+                    style: AppTextstyles.kResultTextStyle,
                   ),
                   Text(
                     bmiResult,
-                    style: kBMITextStyle,
+                    style: AppTextstyles.kBMITextStyle,
                   ),
                   Text(
                     interpretation,
                     textAlign: TextAlign.center,
-                    style: kResultBodyTextStyle,
+                    style: AppTextstyles.kResultBodyTextStyle,
                   ),
                 ],
               ),

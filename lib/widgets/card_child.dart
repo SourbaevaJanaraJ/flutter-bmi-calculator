@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bmi_calculator/constants.dart';
+import 'package:flutter_bmi_calculator/constants/app_textstyles.dart';
 
 const double iconSize = 90.0;
 const sizedBoxHeight = 15.0;
@@ -24,7 +24,7 @@ class CardChild extends StatelessWidget {
         ),
         Text(
           this.label,
-          style: kLabelTextStyle,
+          style: AppTextstyles.kLabelTextStyle,
         ),
       ],
     );

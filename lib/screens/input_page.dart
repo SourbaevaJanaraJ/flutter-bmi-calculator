@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:flutter_bmi_calculator/components/reusable_card.dart';
-import 'package:flutter_bmi_calculator/components/card_child.dart';
-import 'package:flutter_bmi_calculator/constants.dart';
-import 'package:flutter_bmi_calculator/components/round_icon_button.dart';
-import 'package:flutter_bmi_calculator/components/bottom_button.dart';
-import 'package:flutter_bmi_calculator/calculator_brain.dart';
+import 'package:flutter_bmi_calculator/constants/app_textstyles.dart';
+import 'package:flutter_bmi_calculator/constants/constants.dart';
+import 'package:flutter_bmi_calculator/widgets/bottom_button.dart';
+import 'package:flutter_bmi_calculator/widgets/card_child.dart';
+import 'package:flutter_bmi_calculator/widgets/reusable_card.dart';
+import 'package:flutter_bmi_calculator/widgets/round_icon_button.dart';
 
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'package:flutter_bmi_calculator/repo/bmi_repo.dart';
 import 'package:flutter_bmi_calculator/screens/result_page.dart';
 
 enum Gender {
@@ -49,8 +51,8 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     color: selectedGender == Gender.Male
-                        ? kActiveCardColor
-                        : kInactiveCardColor,
+                        ? AppColors.kActiveCardColor
+                        : AppColors.kInactiveCardColor,
                     cardChild: CardChild(
                       icon: FontAwesomeIcons.mars,
                       label: 'MALE',
@@ -65,8 +67,8 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     color: selectedGender == Gender.Female
-                        ? kActiveCardColor
-                        : kInactiveCardColor,
+                        ? AppColors.kActiveCardColor
+                        : AppColors.kInactiveCardColor,
                     cardChild: CardChild(
                       icon: FontAwesomeIcons.venus,
                       label: 'FEMALE',
@@ -78,13 +80,13 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ReusableCard(
-              color: kActiveCardColor,
+              color: AppColors.kActiveCardColor,
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
                     'HEIGHT',
-                    style: kLabelTextStyle,
+                    style: AppTextstyles.kLabelTextStyle,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -93,11 +95,11 @@ class _InputPageState extends State<InputPage> {
                     children: <Widget>[
                       Text(
                         height.toString(),
-                        style: kNumberTextStyle,
+                        style: AppTextstyles.kNumberTextStyle,
                       ),
                       Text(
                         'cm',
-                        style: kLabelTextStyle,
+                        style: AppTextstyles.kLabelTextStyle,
                       ),
                     ],
                   ),
@@ -132,17 +134,17 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    color: kActiveCardColor,
+                    color: AppColors.kActiveCardColor,
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
                           'WEIGHT',
-                          style: kLabelTextStyle,
+                          style: AppTextstyles.kLabelTextStyle,
                         ),
                         Text(
                           weight.toString(),
-                          style: kNumberTextStyle,
+                          style: AppTextstyles.kNumberTextStyle,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -172,17 +174,17 @@ class _InputPageState extends State<InputPage> {
                 ),
                 Expanded(
                   child: ReusableCard(
-                    color: kActiveCardColor,
+                    color: AppColors.kActiveCardColor,
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
                           'AGE',
-                          style: kLabelTextStyle,
+                          style: AppTextstyles.kLabelTextStyle,
                         ),
                         Text(
                           age.toString(),
-                          style: kNumberTextStyle,
+                          style: AppTextstyles.kNumberTextStyle,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -215,8 +217,8 @@ class _InputPageState extends State<InputPage> {
           ),
           BottomButton(
             onTap: () {
-              CalculatorBrain calc =
-                  CalculatorBrain(height: height, weight: weight);
+              BMIRepo calc =
+                  BMIRepo(height: height, weight: weight);
               Navigator.push(
                   context,
                   MaterialPageRoute(
